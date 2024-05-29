@@ -12,8 +12,6 @@ private:
     string m_firstName;
     string m_lastName;
     int m_age;
-
-    friend class BasketballPlayer;
 protected:
     int prot = 0;
 public:
@@ -27,6 +25,7 @@ public:
         string result = "Person first name - " + m_firstName + "; last name - " + m_lastName + "; age - " + to_string(m_age);
         return result;
     };
+    string getFirstname() const { return m_firstName; }
     string getGreetings(string msgText = "") const
     {
         string result = "I am " + m_firstName;
@@ -63,7 +62,7 @@ public:
     }
     void sayScore() const
     {
-        std::cout << "Hi, " << m_firstName << " your average games score is " << gameAverage;
+        std::cout << "Hi, " << getFirstname() << " your average games score is " << gameAverage;
     }
 };
 
