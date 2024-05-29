@@ -66,13 +66,36 @@ public:
     }
 };
 
+class Passport
+{
+protected:
+    string firstName;
+    string lastName;
+public:
+    Passport(string pFirstname, string pLastname) : firstName(pFirstname), lastName(pLastname) {};
+
+    string getFirstname() const { return firstName; }
+    string getLastname() const { return lastName; }
+};
+
+class ForeignPassport : public Passport
+{
+private:
+    size_t foreignPassportId;
+    string data;
+public:
+    ForeignPassport(string pFirstname, string pLastname, string pData, size_t pForeignPassportId) : Passport(pFirstname, pLastname), foreignPassportId(pForeignPassportId), data(pData) {};
+
+    size_t getID() const {  return foreignPassportId; }
+    string getData() const { return data; }
+
+    void print() const { cout << foreignPassportId << " : " << firstName << " " << lastName << " | " << data << endl; }
+};
+
 int main()
 {
-    BasketballPlayer test("Nikita", "Volianskyi", 18, 7.8f, 25);
-
-    std::cout << test.getInfo() << std::endl;
-    test.sayScore();
-
+    ForeignPassport test("Nikita", "Volianskyi", "-", 1024420061303);
+    test.print();
 
 	return 0;
 }
