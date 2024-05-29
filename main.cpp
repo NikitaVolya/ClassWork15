@@ -92,10 +92,38 @@ public:
     void print() const { cout << foreignPassportId << " : " << firstName << " " << lastName << " | " << data << endl; }
 };
 
+
+
+class Vehicle
+{
+private:
+    string name;
+public:
+    Vehicle(string pName) : name(pName) { cout << "Vehicle" << endl; };
+};
+
+class Bicycle : public virtual Vehicle
+{
+public:
+    Bicycle() : Vehicle("Bicycle") { cout << "Bicycle" << endl; };
+};
+
+class Motorcycle : public virtual Vehicle
+{
+public:
+    Motorcycle() : Vehicle("Motorcycle") { cout << "Motorcycle" << endl; };
+};
+
+class MotoBike : public Bicycle, public Motorcycle
+{
+public:
+    MotoBike() : Vehicle("MotoBike") { cout << "MotoBike" << endl; };
+};
+
+
 int main()
 {
-    ForeignPassport test("Nikita", "Volianskyi", "-", 1024420061303);
-    test.print();
+    MotoBike test;
 
 	return 0;
 }
